@@ -9,7 +9,7 @@ créditos (por exemplo,1 se protagonista ou 0 se não recebeu créditos).
 
 inicio:-
     dynamic(ator/4),
-    consult("help.pl"), %substitui o see(arquivo);
+    consult("banco_de_atores.pl"), %substitui o see(arquivo);
     escreve_menu,
     le_escolha(Op),
     executa(Op).
@@ -44,7 +44,7 @@ le_str(Resto).
 %fim do código da leitura sem precisar de ponto
 
 executa(1):-
-    reconsult("help.pl"),% = aderir informaçoes de help.pl para a base de conhecimento do prolog
+    reconsult("banco_de_atores.pl"),% = aderir informaçoes de banco_de_atores.pl para a base de conhecimento do prolog
     findall(A,ator(A,_,_,_),L),% = pega tudo da base de conhecimento do prolog relacionado a ator/4 e bota em uma lista
     escreve(L),% pega essa lista e escreve um por um dos elementos
     inicio.
@@ -54,12 +54,12 @@ executa(2):-
     inicio.
 
 executa(3):-
-    reconsult("help.pl"),
+    reconsult("banco_de_atores.pl"),
     removeLinha,
     inicio.
 
 executa(4):-
-    reconsult("help.pl"),
+    reconsult("banco_de_atores.pl"),
     write('escreva o ator que quer contar: '),
     le_atomo(X),
     findall(A,ator(X,A,_,_),L),
@@ -97,9 +97,9 @@ escreveArquivo:-
     le_atomo(Z),nl,
     write('ranking do filme: '),
     le_atomo(W),nl,
-    append('help.pl'),%no lugar de tell, pois o tell apaga tudo do arquivo
-    nl,%bota nova linha no arquivo help.pl
-    write(ator(X,Y,Z,W)),%escreve no fim de help.pl o novo ator
+    append('banco_de_atores.pl'),%no lugar de tell, pois o tell apaga tudo do arquivo
+    nl,%bota nova linha no arquivo banco_de_atores.pl
+    write(ator(X,Y,Z,W)),%escreve no fim de banco_de_atores.pl o novo ator
     write('.'),
     nl,
     told.
@@ -114,6 +114,6 @@ removeLinha:-
     write('escreva a classificacao do filme que quer remover: '),
     le_atomo(W),nl,
     retract(ator(X,Y,Z,W)),%tira da base do conhecimento de prolog( não do arquivo) tudo com aquele ator específico
-    tell('help.pl'),%apaga o arquivo todo
+    tell('banco_de_atores.pl'),%apaga o arquivo todo
     listing(ator/4),%pega os relacionamentos restantes do conhecimento do prolog( tudo menos oq foi tirado) e manda eles de volta pro arquivo
     told.

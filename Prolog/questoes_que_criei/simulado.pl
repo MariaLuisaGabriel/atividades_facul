@@ -240,7 +240,7 @@ impar([H|L1],I1,I):-
     impar(L1,I1,I).
 
 /*questao 7:mmc de dois numeros.*/
-%sabemos, pelo que vimos em MCC, que MDC(a,b).MMC(a,b) = a.b; e podemos usar isso nessa questão.(resultados somente inteiros)
+%sabemos, pelo que vimos em MCC, que MDC(a,b)*MMC(a,b) = a*b; e podemos usar isso nessa questão.(resultados somente inteiros)
 
 mmc(A,B,R):-
     mdc(A,B,R1),
@@ -264,7 +264,7 @@ mdc(A,B1,R).
 /*questao 9: gere uma lista de 5 elementos pseudoaleatorios, com classe de aleatoriedade(m) escolhida pelo usuario.*/
 %como vimos em MCC:
 %pseudo-aleatoriedade, fórmula: Xn+1 = (aXn+c) mod m.
-%para essa questão, c=0(crescendo) e a=1234, Xn=1(crescendo). (padrões)
+%para essa questão, pus c=0(crescendo) e a=1234, Xn=1(crescendo). (padrões)
 
 aleatorio(M,R):-aleatorio(M,1,0,5,0,[],R).
 

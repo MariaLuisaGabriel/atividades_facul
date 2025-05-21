@@ -1,0 +1,2 @@
+a b c d efghij_8 908 9.2 begin beginend while a:=2
+<> >< >= <= } 
